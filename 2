@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, key;
+    int comparisons = 0;
+
+    cout << "Enter size of array: ";
+    cin >> n;
+
+    int arr[n];
+    cout << "Enter sorted array elements: ";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    cout << "Enter key element: ";
+    cin >> key;
+
+    int low = 0, high = n - 1;
+    bool found = false;
+
+    while(low <= high) {
+        int mid = (low + high) / 2;
+        comparisons++;
+
+        if(arr[mid] == key) {
+            found = true;
+            break;
+        }
+        else if(key < arr[mid]) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+
+    if(found)
+        cout << "Key element is present\n";
+    else
+        cout << "Key element is not present\n";
+
+    cout << "Total comparisons: " << comparisons << endl;
+
+    return 0;
+}
