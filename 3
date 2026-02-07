@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int n;
+        cin >> n;
+
+        int arr[n];
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+
+        int key;
+        cin >> key;
+
+        int comparisons = 0;
+        int step = sqrt(n);
+        int prev = 0;
+
+        // Jump Search
+        while (prev < n && arr[min(step, n) - 1] < key) {
+            comparisons++;
+            prev = step;
+            step += sqrt(n);
+            if (prev >= n) break;
+        }
+
+        // Linear Search in block
+        for (int i = prev; i < min(step, n); i++) {
+            comparisons++;
+            if (arr[i] == key) {
+                cout << "Present " << comparisons << endl;
+                goto next;
+            }
+        }
+
+        cout << "Not Present " << comparisons << endl;
+        next:;
+    }
+
+    return 0;
+}
