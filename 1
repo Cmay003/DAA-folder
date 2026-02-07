@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, key;
+    int comparisons = 0;
+
+    cout << "Enter size of array: ";
+    cin >> n;
+
+    int arr[n];
+    cout << "Enter array elements: ";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    cout << "Enter key element: ";
+    cin >> key;
+
+    bool found = false;
+
+    for(int i = 0; i < n; i++) {
+        comparisons++;
+        if(arr[i] == key) {
+            found = true;
+            break;
+        }
+    }
+
+    if(found)
+        cout << "Key element is present\n";
+    else
+        cout << "Key element is not present\n";
+
+    cout << "Total comparisons: " << comparisons << endl;
+
+    return 0;
+}
